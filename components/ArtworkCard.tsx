@@ -1,26 +1,36 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Card, CardBody, Chip } from "@heroui/react";
 import { Artwork } from "../lib/types";
 
 export default function ArtworkCard({ artwork }: { artwork: Artwork }) {
   return (
-    <Link href={`/artworks/${artwork._id}`} className="block">
-      <Card className="group overflow-hidden transition hover:-translate-y-1 hover:shadow-lg" shadow="sm">
-        <div className="relative h-48 w-full bg-brand-50">
-          <Image src={artwork.image} alt={artwork.title} fill className="object-cover" unoptimized />
+    <Link href={`/artworks/${artwork._id}`} className="group block">
+      <div className="frame overflow-hidden bg-white transition group-hover:border-brand-500/60">
+        <div className="relative h-48 w-full overflow-hidden bg-brand-50">
+          <Image
+            src={artwork.image}
+            alt={artwork.title}
+            fill
+            className="object-cover transition duration-300 group-hover:scale-[1.03]"
+            unoptimized
+          />
           {artwork.sold && (
-            <Chip color="default" className="absolute right-2 top-2 bg-ink text-white" size="sm">
+            <span className="absolute right-2 top-2 bg-ink px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-paper">
               Sold
-            </Chip>
+            </span>
           )}
         </div>
-        <CardBody className="p-4">
-          <h3 className="truncate font-semibold text-ink">{artwork.title}</h3>
-          <p className="mt-1 text-sm text-ink/60">by {artwork.artistName}</p>
-          <p className="mt-2 font-bold text-brand-700">${artwork.price}</p>
-        </CardBody>
-      </Card>
+      </div>
+
+      {/* Museum label strip */}
+      <div className="border-t-0 px-1 py-3">
+        <p className="eyebrow text-ink/50">{artwork.category}</p>
+        <h3 className="mt-1 truncate font-display text-lg italic text-ink">{artwork.title}</h3>
+        <div className="mt-1.5 flex items-center justify-between">
+          <p className="text-xs text-ink/60">by {artwork.artistName}</p>
+          <p className="font-display text-sm font-medium text-brand-700">${artwork.price}</p>
+        </div>
+      </div>
     </Link>
   );
 }
