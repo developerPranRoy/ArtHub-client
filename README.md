@@ -1,1 +1,0 @@
-# ArtHub-client
