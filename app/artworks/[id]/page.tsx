@@ -47,6 +47,8 @@ export default function ArtworkDetailsPage() {
   async function handlePurchase() {
     setPurchasing(true);
     try {
+      // In production: redirect to Stripe Checkout here, then this call
+      // happens inside the Stripe webhook after payment success.
       await api.post("/transactions/purchase", { artworkId: id });
       toast.success("Purchase successful!");
       const res = await api.get(`/artworks/${id}`);

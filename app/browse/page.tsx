@@ -41,6 +41,8 @@ function BrowseContent() {
     <div className="mx-auto max-w-6xl px-4 py-10">
       <h1 className="mb-6 text-2xl font-bold text-ink">Browse Artworks</h1>
 
+      {/* Filters - HeroUI Input for text/number fields (reliable component),
+          native select for dropdowns since HeroUI Select has known compatibility quirks */}
       <div className="card mb-8 grid grid-cols-1 gap-3 rounded-2xl border border-black/5 bg-white p-4 shadow-sm md:grid-cols-5">
         <Input
           placeholder="Search title or artist"
