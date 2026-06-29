@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* @import "@heroui/styles"; */
 
 body {
   background-color: #f6f1e6;
